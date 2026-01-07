@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.carrentalfx.TransaksiViewController"
+            prefWidth="900.0" prefHeight="620.0">
+
+    <top>
+        <VBox spacing="8.0" style="-fx-padding: 16;">
+            <children>
+                <Label text="Transaksi Sewa" styleClass="title-3"/>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="4.0">
+            <children>
+                <HBox alignment="CENTER_RIGHT" spacing="8.0" style="-fx-padding: 0 16 4 16;">
+                    <children>
+                        <Label text="Status"/>
+                        <ComboBox fx:id="statusFilterCombo" prefWidth="140.0"/>
+                    </children>
+                </HBox>
+                <TableView fx:id="table" prefHeight="320.0">
+                    <columns>
+                        <TableColumn fx:id="colNo" text="No" prefWidth="50.0"/>
+                        <TableColumn fx:id="colNoKtp" text="No KTP" prefWidth="130.0"/>
+                        <TableColumn fx:id="colMobil" text="Mobil" prefWidth="180.0"/>
+                        <TableColumn fx:id="colTglSewa" text="Tgl Sewa" prefWidth="100.0"/>
+                        <TableColumn fx:id="colTglRencana" text="Tgl Rencana Kembali" prefWidth="140.0"/>
+                        <TableColumn fx:id="colTglKembali" text="Tgl Kembali" prefWidth="120.0" visible="false"/>
+                        <TableColumn fx:id="colTotal" text="Total Bayar" prefWidth="120.0"/>
+                        <TableColumn fx:id="colDenda" text="Denda" prefWidth="100.0"/>
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="100.0"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="16.0" alignment="TOP_LEFT" style="-fx-padding: 16;">
+            <children>
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="Form Sewa" styleClass="title-4"/>
+                        <GridPane hgap="8.0" vgap="6.0">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="30.0"/>
+                                <ColumnConstraints percentWidth="70.0"/>
+                            </columnConstraints>
+                            <rowConstraints/>
+
+                            <children>
+                                <Label text="No KTP" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <ComboBox fx:id="noKtpCombo" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="220.0" editable="true"/>
+
+                                <Label text="Nama" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <TextField fx:id="namaField" GridPane.rowIndex="1" GridPane.columnIndex="1" editable="false"/>
+
+                                <Label text="Alamat" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <TextField fx:id="alamatField" GridPane.rowIndex="2" GridPane.columnIndex="1" editable="false"/>
+
+                                <Label text="Telepon" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                <TextField fx:id="telpField" GridPane.rowIndex="3" GridPane.columnIndex="1" editable="false"/>
+
+                                <Label text="Mobil" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                <HBox spacing="4.0" GridPane.rowIndex="4" GridPane.columnIndex="1" alignment="CENTER_LEFT">
+                                    <children>
+                                        <ComboBox fx:id="mobilCombo" prefWidth="220.0" visible="false" managed="false"/>
+                                        <TextField fx:id="mobilSewaField" prefWidth="220.0" editable="false"/>
+                                        <Button fx:id="pilihMobilButton" text="Pilih..."/>
+                                    </children>
+                                </HBox>
+
+                                <Label text="Tgl Sewa" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                                <DatePicker fx:id="tglSewaPicker" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                                <Label text="Tgl Kembali Rencana" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                                <DatePicker fx:id="tglRencanaPicker" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                            </children>
+                        </GridPane>
+                        <HBox spacing="8.0" alignment="CENTER_RIGHT">
+                            <children>
+                                <Button fx:id="cetakSewaButton" text="Cetak Struk Sewa"/>
+                                <Button fx:id="sewaButton" text="Proses Sewa"/>
+                                <Button fx:id="refreshButton" text="Refresh"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="Pengembalian" styleClass="title-4"/>
+                        <GridPane hgap="8.0" vgap="6.0">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="35.0"/>
+                                <ColumnConstraints percentWidth="65.0"/>
+                            </columnConstraints>
+                            <rowConstraints/>
+
+                            <children>
+                                <Label text="ID Transaksi" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="idTransaksiField" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
+
+                                <Label text="Mobil" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <TextField fx:id="mobilField" GridPane.rowIndex="1" GridPane.columnIndex="1" editable="false"/>
+
+                                <Label text="Tgl Rencana" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <TextField fx:id="tglRencanaField" GridPane.rowIndex="2" GridPane.columnIndex="1" editable="false"/>
+
+                                <Label text="Tgl Kembali" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                <DatePicker fx:id="tglKembaliPicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                                <Label text="Denda" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                <TextField fx:id="dendaField" GridPane.rowIndex="4" GridPane.columnIndex="1" editable="false"/>
+                            </children>
+                        </GridPane>
+                        <HBox spacing="8.0" alignment="CENTER_RIGHT">
+                            <children>
+                                <Button fx:id="cetakPengembalianButton" text="Cetak Struk Pengembalian"/>
+                                <Button fx:id="pengembalianButton" text="Proses Pengembalian"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </bottom>
+
+</BorderPane>

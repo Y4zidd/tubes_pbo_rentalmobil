@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.carrentalfx.ProfileController"
+            prefWidth="560.0" prefHeight="380.0">
+
+    <top>
+        <VBox spacing="6.0" style="-fx-padding: 12 16 8 16;">
+            <children>
+                <Label text="Profil Pengguna" styleClass="title-3"/>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <GridPane hgap="16.0" vgap="10.0" style="-fx-padding: 8 16 8 16;">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="40.0"/>
+                <ColumnConstraints percentWidth="60.0"/>
+            </columnConstraints>
+            <rowConstraints/>
+
+            <children>
+                <VBox spacing="10.0" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                    <children>
+                        <Label text="Foto" styleClass="title-4"/>
+
+                        <ImageView fx:id="photoView"
+                                   fitWidth="220.0"
+                                   fitHeight="140.0"
+                                   preserveRatio="true">
+                            <clip>
+                                <Rectangle width="220.0" height="140.0" arcWidth="14.0" arcHeight="14.0"/>
+                            </clip>
+                            <effect>
+                                <DropShadow radius="10.0" color="#00000033"/>
+                            </effect>
+                        </ImageView>
+
+                        <Button fx:id="choosePhotoButton" text="Pilih Foto" minWidth="90.0"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="10.0" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <children>
+                        <Label text="Username"/>
+                        <Label fx:id="usernameLabel" styleClass="label-strong"/>
+
+                        <Label text="Nama Lengkap"/>
+                        <TextField fx:id="namaField" promptText="Masukkan nama lengkap"/>
+
+                        <Label text="Level"/>
+                        <Label fx:id="levelLabel" style="-fx-background-color: -color-accent-emphasis; -fx-text-fill: white; -fx-padding: 2 8; -fx-background-radius: 12;"/>
+                    </children>
+                </VBox>
+            </children>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="8.0" alignment="CENTER_RIGHT" style="-fx-padding: 8 16 12 16;">
+            <children>
+                <Button fx:id="saveButton" text="Simpan" defaultButton="true"/>
+                <Button fx:id="closeButton" text="Tutup" cancelButton="true"/>
+            </children>
+        </HBox>
+    </bottom>
+
+</BorderPane>
